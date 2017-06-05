@@ -1,0 +1,96 @@
+body{
+	background-color: rgb(0,120,0);
+}
+.animationbox{
+	position: fixed;
+	width: 20%;
+	top: 35%;
+	height:30%;
+	background-color: rgb(222, 224, 226);
+	border: 4px solid white;
+	border-radius: 85px;
+}
+#A{
+	left:.8%;
+}
+#B{
+	left: 28.8%;
+}
+#C{
+	left: 56.8%;
+}
+.N{
+	position: absolute;
+	left: 42%;
+	top:14%;
+	text-align: center;
+	color: red;
+	font-size: 100px;
+}
+#Msg{
+	position: absolute;
+	top:20px;
+	left:15%;
+	font-size: 50px;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+        animation-name: mymove;
+        color:white;
+}
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+button{
+	position: fixed;
+	left:30%;
+        top:70%; 
+	width:250px;
+	height: 100px;
+	background-color: rgb(222,224,226);
+	border: 5px solid blue;
+        border-radius:75px;
+	color: rgb(120,120,120);
+	font-size: 50px;
+}
+button:active{
+	color: white;
+	background-color: black;
+}
+button:hover{
+	color: white;
+	background-color: black;
+}
+#Title{
+	color: rgb(157,120,240);
+	position: fixed;
+	left:25%;
+	top:8%;
+	font-size: 90px;
+	text-shadow: 1px 1px 4px red;
+}
+h2{
+	position: fixed;
+	right:200px;
+	top:0;
+	color: white;
+}
+#Score{
+	position: fixed;
+	left:5%;
+	top:85%;
+	color: white;
+}
+.img {
+    position: absolute;
+    left: 950px;
+    top: 50px;
+    z-index: -1;
+}
+
+.arrowimg {
+    position: absolute;
+    left: 925px;
+    top: 50px;
+    z-index: -1;
+}
