@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SPIN GAME</title>
+		<link rel="stylesheet" href="Spin.css">
+	</head>
+	
+	<body>
+
+	 	<!-- Defining the elements-->
+	
+		<div class="animationbox" id="A">
+			<div class="N" id="NA">0</div>
+		</div>
+		<div class="animationbox" id="B">
+			<div class="N" id="NB">0</div>
+		</div>
+		<div class="animationbox" id="C">
+			<div class="N" id="NC">0</div>
+		</div>
+		<div>
+			<button id="Btn">SPIN</button>
+		</div>
+		<h1 id="Title">SPIN GAME</h1>
+		<h1 id="Msg" style="color: white;"></h1>
+		<h2>Click on the Ball to go back</h2>
+		<h1 id="Score">Score: 000</h1>
+
+		<!-- Defining the functions-->
+
+		<script type="text/javascript">
+			var begin=0;
+			document.getElementById("NA").innerHTML=Math.floor(begin/100);
+			document.getElementById("NB").innerHTML=Math.floor(begin/10)%10;
+			document.getElementById("NC").innerHTML=begin%10;
+			var bn=document.querySelector('button');
+			var flag=0;
+			var score=0;
+			var i=0;
+			var arr=new Array(1,2,3);
+			var elemA = document.getElementById("NA");
+			var elemB = document.getElementById("NB");
+			var elemC = document.getElementById("NC");
+			bn.addEventListener("click",function(){
+				generate(elemC);
+				generate(elemB);
+				generate(elemA);
+				if(flag==1){
+					restart();
+				}
+				check();
+			});
+				function generate(elem) {   
+	  				var pos = 0;
+	  				var q=elem.innerHTML;
+	  				var n=Math.floor(Math.random()*10);
+	  				arr[i]=n;
+	  				i++;
+	 				function roll() {
+	   					if(q==n){
+							pos++;
+							if(pos<=20){
+								requestAnimationFrame(roll);
+							}
+							elem.style.bottom=pos+"%";
+							elem.innerHTML=q;
+						}  
+						else{
+							pos++;
+							if((pos*10)>=100){
+								pos=0;
+								if(q==9){
+									q=0;
+								}
+								else{
+									q++;
+								}
+							}
+							elem.style.bottom=(pos*10)+"%";
+							elem.innerHTML=q;
+							requestAnimationFrame(roll);
+						}
+	  				}
+	  			requestAnimationFrame(roll);
+				}
+				function check(){
+					i=0;
+					if(arr[0]==arr[1]&&arr[0]==arr[2]){
+						document.getElementById("Msg").innerHTML="CONGRATULATIONS";
+						document.getElementById("Btn").innerHTML="RESTART";
+						score+=(arr[2]*100)+(arr[1]*10)+arr[0];
+						document.getElementById("Score").innerHTML="Score: "+score;
+						flag=1;
+					}
+				}
+				function restart(){
+						document.getElementById("Btn").innerHTML="SPIN";
+						document.getElementById("Msg").innerHTML="";
+						flag=0;
+				}
+		</script>
+		<a href="index.html"><img src="football.jpg" class="img"></a>
+                <img src="index.jpg" class="arrowimg">
+	</body>
+</html>
